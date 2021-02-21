@@ -8,3 +8,6 @@
 optional:
 1. A tree display of all the sites visited in a session.
 2. import and export the data with google drive.
+3. Focus add modifier.
+4. multiple windows - multiple parallel sessions
+5. website timer alerts
