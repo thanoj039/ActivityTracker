@@ -11,3 +11,4 @@ optional:
 3. Focus add modifier.
 4. multiple windows - multiple parallel sessions
 5. website timer alerts
+6. overriding browser bookmarks ((or)) Google/Heroku api to store and retrive links( can be another project )
