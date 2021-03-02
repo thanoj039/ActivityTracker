@@ -1,5 +1,4 @@
 console.log('Hello from background.js');
-var start=false;
 var st_time = (new Date).getTime()
 chrome.runtime.onMessage.addListener( function(request,sender,sendResponse)
 {
