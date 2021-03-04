@@ -1,6 +1,7 @@
 var bg = chrome.extension.getBackgroundPage();
 
 window.onload=function(){
+    loadSessions()
     var view_ele = document.getElementById("view")
     var start_ele = document.getElementById("start")
     
@@ -36,4 +37,17 @@ function startSession(){
     start_page.href="session_run.html"
     start_page.click()
     console.log("session started")
+}
+
+function loadSessions(){
+    sessions_ele = document.getElementById("sessions")
+    var i=0
+    chrome.bookmarks.getChildren(bg.parentid,function(sessions){
+        for(item of sessions){
+            var new_ses = document.createElement("option")
+            new_ses.text = item.title
+            new_ses.value = item.id
+            sessions_ele.add(new_ses,sessions_ele[i++])
+        }
+    })
 }
