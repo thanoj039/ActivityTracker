@@ -35,6 +35,8 @@ function viewSession(){
 function startSession(){
     bg.st_time = (new Date).getTime()
     bg.cur_page = 3
+    ses = document.getElementById("sessions")
+    bg.defaultid = ses.options[ses.selectedIndex].value
     const start_page = document.createElement("a")
     start_page.href="session_run.html"
     start_page.click()
