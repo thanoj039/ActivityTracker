@@ -2,14 +2,32 @@
 <html>
     <head>
         <title>Session Details display page.</title>
+        <style>
+            div.ses_view { 
+				margin:4px, 4px; 
+				padding:4px; 
+				background-color: rgb(198, 234, 236); 
+				width: 250px; 
+				height: 200px; 
+				overflow-x: hidden; 
+				overflow-y: auto; 
+				text-align:justify; 
+			}
+        </style>
     </head>
     <body>
         <h2>Session Details</h2>
-        
+        <div class="ses_view">
+            <ul>
+                <li>link1</li>
+                <li>link2</li>
+                <li>link3</li>
+              </ul> 
+        </div>
         <div>
             <button id="back_btn">back</button>
             <button id="openall">Open all</button>
-            <button id="delSes">Optional:DeleteSession</button>
+            <button id="delSes">DeleteSession</button>
         </div>
         <script src="session_view.js"></script>
     </body>
