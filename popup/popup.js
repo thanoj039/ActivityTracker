@@ -26,6 +26,8 @@ if(bg.cur_page==2){
 
 function viewSession(){
     bg.cur_page = 2
+    ses = document.getElementById("sessions")
+    bg.defaultid = ses.options[ses.selectedIndex].value
     const view_page = document.createElement("a")
     view_page.href="session_view.html"
     view_page.click()

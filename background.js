@@ -35,6 +35,20 @@ chrome.runtime.onMessage.addListener( function(request,sender,sendResponse)
             }
         });
 
+    }else if(request == "deleteSession"){
+        chrome.bookmarks.get(defaultid,function(nodes){
+            if(nodes[0].title=="Default"){
+                chrome.bookmarks.getChildren(defaultid,function(nodes){
+                    for(node of nodes){
+                        chrome.bookmarks.remove(node.id)
+                    }
+                })
+            }else{
+                chrome.bookmarks.removeTree(defaultid)
+            }
+        })
+    }else{
+        console.log("Do nothing")
     }
 });
 

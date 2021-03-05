@@ -22,8 +22,7 @@ function openAll(){
 }
 
 function delSession(){
-    
-    console.log("code to delete session.")
-
+    chrome.runtime.sendMessage("deleteSession")
+    goBack()
 }
 
