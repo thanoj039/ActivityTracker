@@ -4,9 +4,11 @@ window.onload=function(){
     loadSessions()
     var view_ele = document.getElementById("view")
     var start_ele = document.getElementById("start")
+    var add_btn = document.getElementById("add_new")
     
     view_ele.addEventListener("click",viewSession)
     start_ele.addEventListener("click",startSession)
+    add_btn.addEventListener("click",addSesssion)
 
 }
 
@@ -41,6 +43,7 @@ function startSession(){
 
 function loadSessions(){
     sessions_ele = document.getElementById("sessions")
+    sessions_ele.innerHTML=""
     var i=0
     chrome.bookmarks.getChildren(bg.parentid,function(sessions){
         for(item of sessions){
@@ -50,4 +53,31 @@ function loadSessions(){
             sessions_ele.add(new_ses,sessions_ele[i++])
         }
     })
+}
+
+function addSesssion(){
+    var new_ses = (document.getElementById("new_session").value).toString()
+    msg = document.getElementById("addError")
+    if(!new_ses){
+        msg.innerHTML="it's empty."
+        msg.style.color="red"
+    }else{
+        chrome.bookmarks.getChildren(bg.parentid,function(sessions){
+            for(item of sessions){
+                console.log(item.title)
+                if(item.title==new_ses){
+                    msg.innerHTML="session already exists."
+                    msg.style.color="red"
+                    return
+                }
+            }
+        })
+        chrome.bookmarks.create({
+            parentId:bg.parentid,title:new_ses
+        },function(){
+            loadSessions()
+        })
+        msg.innerHTML="Session added Succesfully!!"
+        msg.style.color="green"
+    }
 }
