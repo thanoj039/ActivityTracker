@@ -2,6 +2,11 @@ var bg = chrome.extension.getBackgroundPage();
 
 var stop_ele = document.getElementById("stop")
 var cancel_ele = document.getElementById("cancel")
+var ses_name = document.getElementById("ses_name")
+
+chrome.bookmarks.get(bg.defaultid,function(nodes){
+    ses_name.innerHTML = nodes[0].title
+})
 
 stop_ele.addEventListener("click",stopSession)
 cancel_ele.addEventListener("click",goBack)

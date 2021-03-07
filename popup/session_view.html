@@ -2,14 +2,29 @@
 <html>
     <head>
         <title>Session Details display page.</title>
+        <link rel="stylesheet" href="popup.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
+            .btn {
+                background-color: DodgerBlue;
+                border: none;
+                color: white;
+                margin-bottom: 3px;
+                margin-right: 3px;
+                cursor: pointer;
+            }
+
+            /* Darker background on mouse-over */
+            .btn:hover {
+                background-color: rgb(217, 65, 225);
+            }
             div.ses_view { 
 				margin:4px, 4px; 
 				padding:4px; 
-				background-color: rgb(198, 234, 236); 
+				background-color: rgb(180, 192, 192); 
 				width: 250px; 
 				height: 200px; 
-				overflow-x: hidden; 
+				overflow-x: auto; 
 				overflow-y: auto; 
 				text-align:justify; 
 			}

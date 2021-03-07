@@ -41,8 +41,8 @@ function getLI(node){
     var li = document.createElement("li")
     var btn = document.createElement("button")
     btn.id = node.id
-    btn.innerHTML="del"
-    btn.className="del"
+    btn.innerHTML="<i class='fa fa-trash'></i>"
+    btn.className="btn"
     btn.onclick=deleteFunc
     var a = document.createElement("a")
     a.href=node.url

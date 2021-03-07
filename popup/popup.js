@@ -61,6 +61,7 @@ function loadSessions(){
 
 function addSesssion(){
     var new_ses = (document.getElementById("new_session").value).toString()
+    new_ses = new_ses.trim()
     msg = document.getElementById("addError")
     if(!new_ses){
         msg.innerHTML="it's empty."
