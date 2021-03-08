@@ -21,5 +21,4 @@ function goBack(){
 function stopSession(){
     chrome.runtime.sendMessage("stopSession")
     goBack()
-    console.log("session stopped and saved")
 }
