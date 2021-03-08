@@ -64,7 +64,6 @@ function loadList(){
         var list = document.getElementById("list")
         list.innerHTML=""
         if(nodes.length==0){
-            //var sess = document.getElementsByClassName("ses_view")
             var img = document.createElement("img")
             img.src="../images/empty.gif"
             img.style.height="120px"

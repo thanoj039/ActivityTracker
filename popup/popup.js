@@ -44,7 +44,6 @@ function viewSession(){
     const view_page = document.createElement("a")
     view_page.href="session_view.html"
     view_page.click()
-    console.log("session details displayed.")
 }
 
 function startSession(){
@@ -55,7 +54,6 @@ function startSession(){
     const start_page = document.createElement("a")
     start_page.href="session_run.html"
     start_page.click()
-    console.log("session started")
 }
 
 function loadSessions(){

@@ -1,5 +1,3 @@
-console.log('Hello from background.js');
-
 chrome.runtime.onInstalled.addListener(function(){
     alert("Activity Tracker succesfully installed. please don't modify the ActivityTracker folder in your bookmarks.")
 })
