@@ -13,6 +13,11 @@ window.onload=function(){
     loadList()
 }
 
+chrome.bookmarks.get(bg.defaultid,function(nodes){
+    var ses_nam = document.getElementById("heading")
+    ses_nam.innerHTML = nodes[0].title + " session"
+})
+
 var deleteFunc = function(){
     chrome.bookmarks.remove(this.id)
     loadList()
@@ -58,6 +63,17 @@ function loadList(){
     chrome.bookmarks.getChildren(bg.defaultid,function(nodes){
         var list = document.getElementById("list")
         list.innerHTML=""
+        if(nodes.length==0){
+            //var sess = document.getElementsByClassName("ses_view")
+            var img = document.createElement("img")
+            img.src="../images/empty.gif"
+            img.style.height="120px"
+            img.style.widows="120px"
+            var empty = document.createElement("h3")
+            empty.innerHTML="session is empty!!"
+            list.appendChild(img)
+            list.appendChild(empty)
+        }
         for(i of nodes){
             list.appendChild(getLI(i))
         }

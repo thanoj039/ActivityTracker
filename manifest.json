@@ -3,7 +3,7 @@
     "name": "Activity Tracker",
     "description": "To track all the web pages visited",
     "version": "1.0",
-    "web_accessible_resources": ["icon.png"],
+    "web_accessible_resources": ["images/icon.png","images/running.gif"],
     "permissions": [
         "activeTab","background","history","bookmarks"
       ],
@@ -19,7 +19,7 @@
         "scripts": ["background.js"]
     },
     "browser_action": {
-        "default_icon": "icon.png",
+        "default_icon": "images/icon.png",
         "default_popup": "popup/popup.html"
     }
 }

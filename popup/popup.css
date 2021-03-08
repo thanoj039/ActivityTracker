@@ -1,6 +1,48 @@
 body {
     font-family: "Helvetica", Sans-Serif;
+    text-align: center;
     background-color: #daded4;
     height: 275px;
     width: 260px;
+}
+
+.bpop{
+    height: 220px;
+    width: 250px;
+}
+
+.div1{
+    height: 100px;
+}
+
+.btn, .sel, .inp, .lb, .btn2 {
+    margin-top: 5px;
+    margin-bottom: 8px;
+    margin-right: 4px;
+}
+
+.btn,.btn2{
+    background-color: #858b7f;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.btn2:hover, .btn:hover {
+    background-color: rgb(132, 175, 162);
+}
+
+.sel{
+    width: 100px;
+    margin-top: 5px;
+}
+
+.lb{
+    font-size: 16px;
+}
+
+.inp{
+    margin-top: 5px;
 }

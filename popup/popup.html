@@ -4,21 +4,19 @@
         <title>Activity Tracker</title>
         <link rel="stylesheet" href="popup.css">
     </head>
-    <body>
+    <body class="bpop">
         <h2>Activity Tracker</h2>
-        <div>
-            <label for="selected">Select a session:</label>
-            <select id="sessions"></select>
-            <button id="view">View</button>
+        <div class="div1">
+            <label class="lb" for="selected">Select a session:</label><br>
+            <select class="sel" id="sessions"></select><br>
+            <button class="btn" id="view">View</button>
+            <button class="btn" id="start">Start</button>
         </div>
         <div>
-            <label for="add">Add a new session:</label>
-            <input type="text" id="new_session" name="new_session">
-            <span id="addError"></span>
-            <button id="add_new">Add</button>
-        </div>
-        <div>
-            <button id="start">Start</button>
+            <label class="lb" for="add">Add a new session:</label><br>
+            <input class="inp" type="text" id="new_session" name="new_session">
+            <button class="btn" id="add_new">Add</button><br>
+            <span id="addError" style="font:message-box;"></span>
         </div>
         <script src="popup.js"></script>
     </body>

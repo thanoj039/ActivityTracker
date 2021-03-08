@@ -1,5 +1,9 @@
 console.log('Hello from background.js');
 
+chrome.runtime.onInstalled.addListener(function(){
+    alert("Activity Tracker succesfully installed. please don't modify the ActivityTracker folder in your bookmarks.")
+})
+
 var st_time = (new Date).getTime()
 var cur_page = 1
 var parentid = "1"
