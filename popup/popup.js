@@ -1,7 +1,20 @@
 var bg = chrome.extension.getBackgroundPage();
 
 window.onload=function(){
-    loadSessions()
+
+    chrome.bookmarks.create({
+        title:"ActivityTracker"
+    },function(node){
+        bg.parentid = node.id
+        chrome.bookmarks.create({
+            parentId:node.id,title:"Default"
+        },function(defaultNode){
+            bg.defaultid=defaultNode.id
+            loadSessions()
+        })
+    })
+
+    
     var view_ele = document.getElementById("view")
     var start_ele = document.getElementById("start")
     var add_btn = document.getElementById("add_new")
@@ -51,10 +64,21 @@ function loadSessions(){
     var i=0
     chrome.bookmarks.getChildren(bg.parentid,function(sessions){
         for(item of sessions){
-            var new_ses = document.createElement("option")
-            new_ses.text = item.title
-            new_ses.value = item.id
-            sessions_ele.add(new_ses,sessions_ele[i++])
+            if(item.title=="Default"){
+                var new_ses = document.createElement("option")
+                new_ses.text = item.title
+                new_ses.value = item.id
+                sessions_ele.add(new_ses,sessions_ele[i++])
+                break;
+            }
+        }
+        for(item of sessions){
+            if(item.title!="Default"){
+                var new_ses = document.createElement("option")
+                new_ses.text = item.title
+                new_ses.value = item.id
+                sessions_ele.add(new_ses,sessions_ele[i++])
+            }
         }
     })
 }
@@ -64,7 +88,7 @@ function addSesssion(){
     new_ses = new_ses.trim()
     msg = document.getElementById("addError")
     if(!new_ses){
-        msg.innerHTML="it's empty."
+        msg.innerHTML="Name cannot be empty!!"
         msg.style.color="red"
     }else{
         chrome.bookmarks.getChildren(bg.parentid,function(sessions){
