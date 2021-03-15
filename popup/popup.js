@@ -2,16 +2,40 @@ var bg = chrome.extension.getBackgroundPage();
 
 window.onload=function(){
 
-    chrome.bookmarks.create({
-        title:"ActivityTracker"
-    },function(node){
-        bg.parentid = node.id
-        chrome.bookmarks.create({
-            parentId:node.id,title:"Default"
-        },function(defaultNode){
-            bg.defaultid=defaultNode.id
-            loadSessions()
-        })
+    chrome.bookmarks.search({title:"ActivityTracker"},function(nodes){
+        if(nodes){
+            bg.parentid=nodes[0].id
+            chrome.bookmarks.getChildren(bg.parentid,function(nodes){
+                var found = 0
+                for( i of nodes){
+                    if(i.title=="Default"){
+                        bg.defaultid=i.id
+                        found=1
+                    }
+                }
+                if(found==0){
+                    chrome.bookmarks.create({
+                        parentId:bg.parentid,title:"Default"
+                    },function(defaultNode){
+                        bg.defaultid=defaultNode.id
+                        loadSessions()
+                    })
+                }
+            })
+        }else{
+            chrome.bookmarks.create({
+                title:"ActivityTracker"
+            },function(node){
+                bg.parentid = node.id
+                chrome.bookmarks.create({
+                    parentId:node.id,title:"Default"
+                },function(defaultNode){
+                    bg.defaultid=defaultNode.id
+                    loadSessions()
+                })
+            })
+        }
+        loadSessions()
     })
 
     
@@ -89,22 +113,24 @@ function addSesssion(){
         msg.innerHTML="Name cannot be empty!!"
         msg.style.color="red"
     }else{
+        var present=0
         chrome.bookmarks.getChildren(bg.parentid,function(sessions){
             for(item of sessions){
-                console.log(item.title)
                 if(item.title==new_ses){
                     msg.innerHTML="session already exists."
                     msg.style.color="red"
-                    return
+                    present=1
                 }
             }
+            if(present==0){
+                chrome.bookmarks.create({
+                    parentId:bg.parentid,title:new_ses
+                },function(){
+                    loadSessions()
+                })
+                msg.innerHTML="Session added Succesfully!!"
+                msg.style.color="green"
+            }
         })
-        chrome.bookmarks.create({
-            parentId:bg.parentid,title:new_ses
-        },function(){
-            loadSessions()
-        })
-        msg.innerHTML="Session added Succesfully!!"
-        msg.style.color="green"
     }
 }
